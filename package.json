@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack --watch --config webpack.dev.cjs",
     "build": "webpack --config webpack.prod.cjs",
-    "prettier": "prettier --write"
+    "prettier": "prettier . --write"
   },
   "keywords": [
     "websocket",

@@ -1,79 +1,80 @@
 * {
-    margin: 0;
-    padding: 0;
-    background: black;
-    color: #f5fcf6;
-    border: none
+  margin: 0;
+  padding: 0;
+  background: black;
+  color: #f5fcf6;
+  border: none;
 }
 
 body {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 h1 {
-    background: #4bbf44;
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.5em;
-    text-wrap: nowrap;
-    margin-bottom: 10px;
+  background: #4bbf44;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  text-wrap: nowrap;
+  margin-bottom: 10px;
 }
 
 form {
-    align-items: center;
-    flex-direction: column;
-    margin: 0 20px;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 20px;
 }
 
 .addres-input {
-    display: flex;
-    padding: 0 10px;
+  display: flex;
+  padding: 0 10px;
 }
 
-.ip, .port {
-    font-family: monospace;
-    padding: 3px;
-    border-bottom: 1px solid #f5fcf6;
-    outline: none;
-    font-size: 1.6em;
+.ip,
+.port {
+  font-family: monospace;
+  padding: 3px;
+  border-bottom: 1px solid #f5fcf6;
+  outline: none;
+  font-size: 1.6em;
 }
 
 .ip {
-    width: 15ch;
+  width: 15ch;
 }
 
 .port {
-    width: 4ch;
+  width: 4ch;
 }
 
 span {
-    margin-top: 3px;
-    margin-bottom: 4px;
-    font-size: 1.6em;
-    font-family: monospace;
+  margin-top: 3px;
+  margin-bottom: 4px;
+  font-size: 1.6em;
+  font-family: monospace;
 }
 
 button {
-    cursor: pointer;
-    text-align: center;
-    padding: 5px;
-    width: 100%;
-    background: #69b5cb;
-    margin: 10px 0;
-    font-size: 1.4em;
-    position: relative;
+  cursor: pointer;
+  text-align: center;
+  padding: 5px;
+  width: 100%;
+  background: #69b5cb;
+  margin: 10px 0;
+  font-size: 1.4em;
+  position: relative;
 }
 
 button::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    background: red;
-    z-index: 100;
-    display: block;
-    position: absolute;
-    top: calc(50% - 5px);
-    left: 20px;
-    border-radius: 100%;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: red;
+  z-index: 100;
+  display: block;
+  position: absolute;
+  top: calc(50% - 5px);
+  left: 20px;
+  border-radius: 100%;
 }
