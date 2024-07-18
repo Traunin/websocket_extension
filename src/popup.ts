@@ -1,3 +1,5 @@
+import "../styles/popup.css";
+
 const connectButton: Element = document.querySelector(".connect")!;
 const ipField: HTMLInputElement = document.querySelector(".ip")!;
 const portField: HTMLInputElement = document.querySelector(".port")!;

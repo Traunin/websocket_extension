@@ -22,7 +22,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.css&/,
+        test: /\.(css)$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
     ],
@@ -34,7 +34,7 @@ module.exports = {
     }),
 
     new MiniCssExtractPlugin({
-      filename: "[name.css]",
+      filename: "styles/[name].css",
     }),
   ],
 };
