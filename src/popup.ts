@@ -8,7 +8,8 @@ displayDataFromStorage();
 connectButton.addEventListener("click", () => {
   let ip = ipField.value;
   let port = portField.value;
-  console.log(`ws://${ip}:${port}`);
+
+  chrome.runtime.sendMessage({ ip, port });
 });
 
 ipField.addEventListener("keyup", () => {
