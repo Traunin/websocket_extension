@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
-    popup: "./src/popup.js",
-    service_worker: "./src/service_worker.js",
+    popup: "./src/popup.ts",
+    service_worker: "./src/service-worker.ts",
   },
 
   output: {
@@ -16,6 +16,11 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.(ts)$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/,
+      },
       {
         test: /\.css&/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
