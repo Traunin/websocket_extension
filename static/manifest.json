@@ -3,7 +3,7 @@
   "name": "Websocket controller",
   "description": "Control Chrome with Websockets",
   "version": "0.0",
-  "permissions": ["activeTab", "scripting", "tabs"],
+  "permissions": ["activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "action": {
     "default_popup": "popup.html"
