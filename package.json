@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack --watch --config webpack.dev.cjs",
     "build": "webpack --config webpack.prod.cjs",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "lint": "eslint **/*.js --max-warnings=0"
   },
   "keywords": [
     "websocket",
@@ -21,6 +22,9 @@
   "license": "MIT",
   "devDependencies": {
     "copy-webpack-plugin": "^12.0.2",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
     "mini-css-extract-plugin": "^2.9.0",
     "prettier": "^3.3.3",
     "webpack": "^5.93.0",
