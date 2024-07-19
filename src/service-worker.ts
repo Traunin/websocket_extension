@@ -1,42 +1,52 @@
 let webSocket: WebSocket | null = null;
-const enum ServerStatus {
-  disconnected = 0,
-  connecting = 1,
-  connected = 2,
-}
+import { ServerStatus } from "./server-status";
 let serverStatus = ServerStatus.disconnected;
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  connect(request.ip, request.port);
+  const action: string = request.action;
+  switch (action) {
+    case "getStatus":
+      sendStatus();
+      break;
+    case "connectWebsocket":
+      connect(request.ip, request.port);
+      break;
+    case "disconnectWebsocket":
+      disconnect();
+      break;
+  }
 });
 
 function connect(ip: string, port: string) {
   let address = `ws://${ip}:${port}`;
   console.log(address);
   webSocket = new WebSocket(address);
-  serverStatus = ServerStatus.connecting
+  serverStatus = ServerStatus.connecting;
+  sendStatus();
 
   webSocket.onopen = () => {
     keepAlive();
-    serverStatus = ServerStatus.connected
+    serverStatus = ServerStatus.connected;
+    sendStatus();
   };
 
   webSocket.onclose = () => {
     webSocket = null;
-    serverStatus = ServerStatus.disconnected
+    serverStatus = ServerStatus.disconnected;
+    sendStatus();
   };
 
   webSocket.onmessage = ({ data }) => {
-    console.log(data)
-  }
+    console.log(data);
+  };
 }
 
 function disconnect() {
   if (webSocket == null) {
-    return
+    return;
   }
 
-  webSocket.close()
+  webSocket.close();
 }
 
 function keepAlive() {
@@ -50,4 +60,8 @@ function keepAlive() {
     },
     20 * 1000, // 20 seconds
   );
+}
+
+function sendStatus() {
+  chrome.runtime.sendMessage({ action: "sendStatus", serverStatus });
 }
