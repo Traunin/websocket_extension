@@ -66,15 +66,14 @@ button {
   position: relative;
 }
 
-button::before {
-  content: "";
-  width: 10px;
-  height: 10px;
+.connected {
+  background: #4bbf44;
+}
+
+.connecting {
+  background: yellow;
+}
+
+.disconnected {
   background: red;
-  z-index: 100;
-  display: block;
-  position: absolute;
-  top: calc(50% - 5px);
-  left: 20px;
-  border-radius: 100%;
 }

@@ -12,7 +12,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   switch (action) {
     case "sendStatus":
       serverStatus = request.serverStatus;
-      updateButtonVisual()
+      updateButtonVisual();
   }
 });
 
@@ -20,12 +20,15 @@ function updateButtonVisual() {
   switch (serverStatus) {
     case ServerStatus.connecting:
       connectButton.innerHTML = "Connecting...";
+      connectButton.className = "connecting";
       break;
     case ServerStatus.connected:
       connectButton.innerHTML = "Disconnect";
+      connectButton.className = "connected";
       break;
     case ServerStatus.disconnected:
       connectButton.innerHTML = "Connect";
+      connectButton.className = "disconnected";
       break;
   }
 }
