@@ -8,5 +8,11 @@
   "background": { "service_worker": "service_worker.js" },
   "action": {
     "default_popup": "popup.html"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://music.youtube.com/*"],
+      "js": ["youtube_controller.js"]
+    }
+  ]
 }

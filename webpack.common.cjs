@@ -7,6 +7,7 @@ module.exports = {
   entry: {
     popup: "./src/popup.ts",
     service_worker: "./src/service-worker.ts",
+    youtube_controller: "./src/pages/youtube-controller.ts",
   },
 
   output: {

@@ -38,6 +38,7 @@ function connect(ip: string, port: string) {
 
   webSocket.onmessage = ({ data }) => {
     chrome.runtime.sendMessage({ action: "websocketAction", data });
+    sendMessageToCurrentTab(data);
   };
 }
 
@@ -64,4 +65,12 @@ function keepAlive() {
 
 function sendStatus() {
   chrome.runtime.sendMessage({ action: "sendStatus", serverStatus });
+}
+
+function sendMessageToCurrentTab(message: string) {
+  chrome.tabs.query({active:true}, ([tab]) => {
+    if (tab != undefined && tab.id != undefined) {
+      chrome.tabs.sendMessage(tab.id, message);
+    }
+  });
 }
