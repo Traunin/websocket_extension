@@ -74,10 +74,10 @@ portField.addEventListener("keyup", () => {
 
 function displayDataFromStorage(): void {
   chrome.storage.sync.get(["ip"], (storedData) => {
-    ipField.value = storedData["ip"];
+    ipField.value = storedData["ip"] || "";
   });
   chrome.storage.sync.get(["port"], (storedData) => {
-    portField.value = storedData["port"];
+    portField.value = storedData["port"] || "";
   });
   askForButtonStatus();
 }
