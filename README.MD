@@ -1,7 +1,8 @@
 # Websocket controller
 Allows you to control Chrome using websockets
-
-## Contributing
+## Currently implemented
+Youtube music pause/play on any websocket message
+## Contributing/downloading
 * run `git clone https://github.com/Traunin/websocket_extension.git`
 * run `npm install` in a project folder to install dependencies locally
 * run `npm start` to bundle the files using webpack. The extension is now in the `dist` folder
