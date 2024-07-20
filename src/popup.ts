@@ -1,8 +1,11 @@
 import "../styles/popup.css";
 import { ServerStatus } from "./server-status";
+
 const connectButton: Element = document.querySelector(".connect")!;
 const ipField: HTMLInputElement = document.querySelector(".ip")!;
 const portField: HTMLInputElement = document.querySelector(".port")!;
+const logDisplay: HTMLElement = document.querySelector("p")!;
+
 let serverStatus = ServerStatus.disconnected;
 
 displayDataFromStorage();
@@ -13,6 +16,9 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case "sendStatus":
       serverStatus = request.serverStatus;
       updateButtonVisual();
+      break;
+    case "websocketAction":
+      logDisplay.innerHTML = request.data;
   }
 });
 

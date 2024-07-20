@@ -37,7 +37,7 @@ function connect(ip: string, port: string) {
   };
 
   webSocket.onmessage = ({ data }) => {
-    console.log(data);
+    chrome.runtime.sendMessage({ action: "websocketAction", data });
   };
 }
 
