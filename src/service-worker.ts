@@ -1,6 +1,5 @@
 let webSocket: WebSocket | null = null;
-import { ServerStatus } from "./server-status";
-let serverStatus = ServerStatus.disconnected;
+let serverStatus = WebSocket.CLOSED;
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   const action: string = request.action;
@@ -23,25 +22,22 @@ function connect(ip: string, port: string) {
   try {
     webSocket = new WebSocket(address);
   } catch (e) {
-    disconnect()
-    return
+    disconnect();
+    return;
   }
-  serverStatus = ServerStatus.connecting;
   sendStatus();
 
   webSocket.onopen = () => {
     keepAlive();
-    serverStatus = ServerStatus.connected;
     sendStatus();
   };
 
   webSocket.onerror = () => {
-    disconnect()
-  }
+    disconnect();
+  };
 
   webSocket.onclose = () => {
     webSocket = null;
-    serverStatus = ServerStatus.disconnected;
     sendStatus();
   };
 
@@ -73,11 +69,14 @@ function keepAlive() {
 }
 
 function sendStatus() {
-  chrome.runtime.sendMessage({ action: "sendStatus", serverStatus });
+  chrome.runtime.sendMessage({
+    action: "sendStatus",
+    websocketStatus: webSocket ? webSocket.readyState : WebSocket.CLOSED,
+  });
 }
 
 function sendMessageToCurrentTab(message: string) {
-  chrome.tabs.query({active:true}, ([tab]) => {
+  chrome.tabs.query({ active: true }, ([tab]) => {
     if (tab != undefined && tab.id != undefined) {
       chrome.tabs.sendMessage(tab.id, message);
     }

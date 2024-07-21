@@ -1,12 +1,11 @@
 import "../styles/popup.css";
-import { ServerStatus } from "./server-status";
 
 const connectButton: Element = document.querySelector(".connect")!;
 const ipField: HTMLInputElement = document.querySelector(".ip")!;
 const portField: HTMLInputElement = document.querySelector(".port")!;
 const logDisplay: HTMLElement = document.querySelector("p")!;
 
-let serverStatus = ServerStatus.disconnected;
+let websocketStatus: number = WebSocket.CLOSED;
 
 displayDataFromStorage();
 
@@ -14,7 +13,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   const action: string = request.action;
   switch (action) {
     case "sendStatus":
-      serverStatus = request.serverStatus;
+      websocketStatus = request.websocketStatus;
       updateButtonVisual();
       break;
     case "websocketAction":
@@ -23,16 +22,16 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 });
 
 function updateButtonVisual() {
-  switch (serverStatus) {
-    case ServerStatus.connecting:
+  switch (websocketStatus) {
+    case WebSocket.CONNECTING:
       connectButton.innerHTML = "Connecting...";
       connectButton.className = "connecting";
       break;
-    case ServerStatus.connected:
+    case WebSocket.OPEN:
       connectButton.innerHTML = "Disconnect";
       connectButton.className = "connected";
       break;
-    case ServerStatus.disconnected:
+    case WebSocket.CLOSED:
       connectButton.innerHTML = "Connect";
       connectButton.className = "disconnected";
       break;
@@ -40,14 +39,14 @@ function updateButtonVisual() {
 }
 
 connectButton.addEventListener("click", () => {
-  switch (serverStatus) {
-    case ServerStatus.connecting:
+  switch (websocketStatus) {
+    case WebSocket.CONNECTING:
       disconnectWebsocket();
       break;
-    case ServerStatus.connected:
+    case WebSocket.OPEN:
       disconnectWebsocket();
       break;
-    case ServerStatus.disconnected:
+    case WebSocket.CLOSED:
       sendConnectionData();
       break;
   }
