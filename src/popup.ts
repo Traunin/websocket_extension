@@ -42,7 +42,7 @@ function updateButtonVisual() {
 connectButton.addEventListener("click", () => {
   switch (serverStatus) {
     case ServerStatus.connecting:
-      // might add early disconnect
+      disconnectWebsocket();
       break;
     case ServerStatus.connected:
       disconnectWebsocket();
