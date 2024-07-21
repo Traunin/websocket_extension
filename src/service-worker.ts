@@ -20,7 +20,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 function connect(ip: string, port: string) {
   let address = `ws://${ip}:${port}`;
   console.log(address);
-  webSocket = new WebSocket(address);
+  try {
+    webSocket = new WebSocket(address);
+  } catch (e) {
+    disconnect()
+    return
+  }
   serverStatus = ServerStatus.connecting;
   sendStatus();
 
@@ -29,6 +34,10 @@ function connect(ip: string, port: string) {
     serverStatus = ServerStatus.connected;
     sendStatus();
   };
+
+  webSocket.onerror = () => {
+    disconnect()
+  }
 
   webSocket.onclose = () => {
     webSocket = null;
