@@ -4,6 +4,7 @@ const connectButton: Element = document.querySelector(".connect")!;
 const ipField: HTMLInputElement = document.querySelector(".ip")!;
 const portField: HTMLInputElement = document.querySelector(".port")!;
 const logDisplay: HTMLElement = document.querySelector("p")!;
+const logs: HTMLElement = document.querySelector(".logs")!;
 
 let websocketStatus: number = WebSocket.CLOSED;
 
@@ -26,14 +27,17 @@ function updateButtonVisual() {
     case WebSocket.CONNECTING:
       connectButton.innerHTML = "Connecting...";
       connectButton.className = "connecting";
+      logs.className = "hidden";
       break;
     case WebSocket.OPEN:
       connectButton.innerHTML = "Disconnect";
       connectButton.className = "connected";
+      logs.className = "logs";
       break;
     case WebSocket.CLOSED:
       connectButton.innerHTML = "Connect";
       connectButton.className = "disconnected";
+      logs.className = "hidden";
       break;
   }
 }
