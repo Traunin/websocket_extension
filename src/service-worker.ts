@@ -76,9 +76,11 @@ function sendStatus() {
 }
 
 function sendMessageToCurrentTab(message: string) {
-  chrome.tabs.query({ active: true }, ([tab]) => {
-    if (tab != undefined && tab.id != undefined) {
-      chrome.tabs.sendMessage(tab.id, message);
-    }
+  chrome.tabs.query({ active: true }, (tabs) => {
+    tabs.forEach((tab) => {
+      if (tab != undefined && tab.id != undefined) {
+        chrome.tabs.sendMessage(tab.id, message);
+      }
+    })
   });
 }
