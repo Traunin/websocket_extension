@@ -12,8 +12,13 @@
   "content_scripts": [
     {
       "matches": ["https://music.youtube.com/*"],
-      "all_frames" : true,
+      "all_frames": true,
       "js": ["youtube_controller.js"]
+    },
+    {
+      "matches": ["https://www.youtube.com/shorts/*"],
+      "all_frames": true,
+      "js": ["shorts_controller.js"]
     }
   ]
 }
