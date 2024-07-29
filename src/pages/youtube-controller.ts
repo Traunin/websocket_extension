@@ -18,44 +18,33 @@ chrome.runtime.onMessage.addListener((request) => {
   }
 });
 
-const playButton: HTMLElement = document.querySelector(
-  "#left-controls #play-pause-button",
-)!;
-
 function togglePlay() {
-  //playButton.click();
-  // space
-  pressKey(" ")
+  pressKey(" ");
   console.log("togglePlay");
 }
 
 function previousSong() {
-  //K
-  pressKey("K")
+  pressKey("K");
   console.log("previousSong");
 }
 
 function nextSong() {
-  //J
-  pressKey("J")
+  pressKey("J");
   console.log("nextSong");
 }
 
 function decreaseVolume() {
-  //-
-  pressKey("-")
+  pressKey("-");
   console.log("decreaseVolume");
 }
 
 function toggleMute() {
-  //M
-  pressKey("M")
+  pressKey("M");
   console.log("toggleMute");
 }
 
 function increaseVolume() {
-  //=
-  pressKey("=")
+  pressKey("=");
   console.log("increaseVolume");
 }
 
