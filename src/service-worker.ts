@@ -1,3 +1,5 @@
+const PREV_TAB = "j";
+const NEXT_TAB = "g";
 let webSocket: WebSocket | null = null;
 let serverStatus = WebSocket.CLOSED;
 
@@ -42,6 +44,10 @@ function connect(ip: string, port: string) {
   };
 
   webSocket.onmessage = ({ data }) => {
+    if (data == PREV_TAB || data == NEXT_TAB) {
+      switchTab(data);
+      return;
+    }
     chrome.runtime.sendMessage({ action: "websocketAction", data });
     sendMessageToCurrentTab(data);
   };
@@ -81,6 +87,25 @@ function sendMessageToCurrentTab(message: string) {
       if (tab != undefined && tab.id != undefined) {
         chrome.tabs.sendMessage(tab.id, message);
       }
-    })
+    });
+  });
+}
+
+function switchTab(data: string) {
+  let tabOffset = data == PREV_TAB ? 1 : -1;
+  chrome.tabs.query({}, (tabs) => {
+    let currentTabIndex = tabs.find((tab) => tab.active)?.index;
+    if (currentTabIndex == undefined) {
+      return;
+    }
+
+    let nextTabId = currentTabIndex + tabOffset;
+    let tabCount = tabs.length;
+    if (nextTabId < 0) {
+      nextTabId = tabCount - 1;
+    }
+    nextTabId %= tabCount;
+    let nextTab = tabs[nextTabId].id!;
+    chrome.tabs.update(nextTab, { active: true });
   });
 }
