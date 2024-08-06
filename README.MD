@@ -1,7 +1,8 @@
 # Websocket controller
 Allows you to control Chrome using websockets
 ## Currently implemented
-* Youtube music
+* Tab switching
+* Youtube music, shorts, Twitch
     * Pause/play
     * Volume control
     * Song selection
