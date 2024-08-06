@@ -19,6 +19,11 @@
       "matches": ["https://www.youtube.com/shorts/*"],
       "all_frames": true,
       "js": ["shorts_controller.js"]
+    },
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "all_frames": true,
+      "js": ["twitch_controller.js"]
     }
   ]
 }
