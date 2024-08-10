@@ -13,7 +13,7 @@
     {
       "matches": ["https://music.youtube.com/*"],
       "all_frames": true,
-      "js": ["youtube_controller.js"]
+      "js": ["youtube_music_controller.js"]
     },
     {
       "matches": ["https://www.youtube.com/shorts/*"],
