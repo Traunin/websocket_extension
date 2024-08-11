@@ -1,4 +1,5 @@
 import Controller from "./controller";
+import { pressKeyKeyCode } from "./key-press";
 
 const actionsMap: { [char: string]: () => void } = {
   f: togglePlay,
@@ -73,12 +74,4 @@ function changeVolume(deltaVolume: number) {
   let currentVolume = videoPlayer.volume;
   let newVolume = Math.min(Math.max(currentVolume + deltaVolume, 0), 1);
   videoPlayer.volume = newVolume;
-}
-
-function pressKeyKeyCode(code: number) {
-  document.dispatchEvent(
-    new KeyboardEvent("keydown", {
-      keyCode: code,
-    }),
-  );
 }

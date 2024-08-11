@@ -1,4 +1,6 @@
 import Controller from "./controller";
+import { pressKey } from "./key-press";
+
 const actionsMap: { [char: string]: () => void } = {
   f: togglePlay,
   e: previousSong,
@@ -32,12 +34,4 @@ function toggleMute() {
 
 function increaseVolume() {
   pressKey("=");
-}
-
-function pressKey(key: string) {
-  document.dispatchEvent(
-    new KeyboardEvent("keydown", {
-      key: key,
-    }),
-  );
 }
