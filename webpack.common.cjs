@@ -9,6 +9,7 @@ module.exports = {
     service_worker: "./src/service-worker.ts",
     youtube_music_controller: "./src/pages/youtube-music-controller.ts",
     shorts_controller: "./src/pages/shorts-controller.ts",
+    youtube_controller: "./src/pages/youtube-controller.ts",
     twitch_controller: "./src/pages/twitch-controller.ts",
   },
 

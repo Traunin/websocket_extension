@@ -24,6 +24,11 @@
       "matches": ["https://www.twitch.tv/*"],
       "all_frames": true,
       "js": ["twitch_controller.js"]
+    },
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "all_frames": true,
+      "js": ["youtube_controller.js"]
     }
   ]
 }
