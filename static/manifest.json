@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Websocket controller",
   "description": "Control Chrome with Websockets",
-  "version": "0.0",
+  "version": "1.0",
   "permissions": ["activeTab", "scripting", "tabs", "storage"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "background": { "service_worker": "service_worker.js" },
