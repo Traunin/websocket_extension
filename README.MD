@@ -2,10 +2,16 @@
 Allows you to control Chrome using websockets
 ## Currently implemented
 * Tab switching
-* Youtube music, shorts, Twitch
-    * Pause/play
-    * Volume control
+* Pause/play
+* Volume control
+* Youtube music
     * Song selection
+* Youtube shorts
+    * Short scrolling
+* Twitch
+    * Stream slection
+* Youtube 
+    * Stepping forwards/backwards
 ## Contributing/downloading
 * run `git clone https://github.com/Traunin/websocket_extension.git`
 * run `npm install` in a project folder to install dependencies locally
