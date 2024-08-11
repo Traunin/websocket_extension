@@ -22,7 +22,7 @@ Allows you to control Google Chrome using WebSocket.
 
 - Stream selection
 
-### Youtube
+### YouTube
 
 - Seeking forwards/backwards
 
