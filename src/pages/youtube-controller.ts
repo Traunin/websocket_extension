@@ -9,7 +9,7 @@ const actionsMap: { [char: string]: () => void } = {
   c: toggleMute,
   a: increaseVolume,
 };
-const volumeSlider = document.querySelector(".ytp-volume-panel")!;
+const volumeSlider: HTMLElement = document.querySelector(".ytp-volume-panel")!;
 
 new Controller(actionsMap);
 
@@ -44,5 +44,7 @@ function increaseVolume() {
 // Emulates a scroll on a volume slider
 function changeVolume(scrollAmount: number) {
   let scrollEvent = new WheelEvent("wheel", { deltaY: -scrollAmount });
+  volumeSlider.focus();
   volumeSlider.dispatchEvent(scrollEvent);
+  volumeSlider.blur();
 }
